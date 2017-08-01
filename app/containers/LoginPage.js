@@ -7,7 +7,8 @@ import {
     ListView,
     AsyncStorage,
     Platform,
-    TouchableOpacity
+    TouchableOpacity,
+    Button
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -38,13 +39,10 @@ export const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators({...homeActions, ...navigationActions}, dispatch)
 });
 
-class Home extends Component {
+class Login extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            'profileExist': false
-        }
     }
 
     componentWillMount() {
@@ -56,36 +54,13 @@ class Home extends Component {
     }
 
     render() {
-        var content;
-        var profile = this.props.profile;
-        if(!(Object.keys(profile).length === 0 && profile.constructor === Object)) {
-            containerStyle = styles.localContainer;
-            content = (
-                <PlayerProfile />
-            )
-
-        } else {
-            containerStyle = styles.container;
-            content = (
-                <View style = {styles.contentContainer}>
-                    <TouchableOpacity onPress = {() => {this.onLoginPressed()}}>
-                        <View style={styles.loginButton}>
-                            <Text style={styles.loginText}>Login</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <Text style = {styles.noDataText}>
-                        You have not set any profile as Home yet.
-                    </Text>
-                    <Text style = {styles.noDataText}>
-                        You can search your profile below using Steam ID or Username
-                    </Text>
-                    <PlayerSearch />
-                </View>
-            )
-        }
         return (
             <View style = {containerStyle}>
-                {content}
+                <View style = {styles.contentContainer}>
+                    <Text style = {styles.noDataText}>
+                        This is login page
+                    </Text>
+                </View>
             </View>
         )
     }
@@ -105,21 +80,8 @@ const baseStyles = _.extend(base.general, {
         justifyContent: 'space-between',
         flex: 1,
         backgroundColor: Colors.mainBackground
-    },
-    loginButton: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignSelf: 'center',
-        marginTop: 10,
-        marginBottom: 10,
-        backgroundColor: 'black'
-    },
-    loginText: {
-        fontSize: 14,
-        color: 'white'
     }
 });
 
 const styles = StyleSheet.create(baseStyles);
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
