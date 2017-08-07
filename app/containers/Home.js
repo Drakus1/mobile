@@ -25,6 +25,8 @@ import Colors from '../themes/Colors';
 import base from '../themes/BaseStyles';
 import Fonts from '../themes/Fonts';
 
+import { Actions } from 'react-native-router-flux';
+
 export const mapStateToProps = state => ({
     alpha: state.settingsState.alpha,
     mod: state.settingsState.mod,
@@ -53,6 +55,7 @@ class Home extends Component {
 
     onLoginPressed() {
         console.log("Pressed");
+        Actions.login();
     }
 
     render() {

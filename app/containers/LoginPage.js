@@ -46,6 +46,14 @@ class Login extends Component {
     }
 
     componentWillMount() {
+        var settings = {
+            authority: 'http://steamcommunity.com/openid',
+            client_id: 'ClaimedID',
+            redirect_uri: '',
+            response_type: 'claimed_id id',
+            scope: 'openid',
+        };
+        var client = new UserManager(settings);
         // var test = new OidcClient;
     }
 

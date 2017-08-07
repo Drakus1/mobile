@@ -11,6 +11,7 @@ import NavDrawer from '../components/NavDrawer';
 import customNavBar from '../components/NavBar';
 import deepNavBar from '../components/DeepNavBar';
 import modalNavBar from '../components/ModalNavBar';
+import Login from './LoginPage';
 
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
@@ -43,6 +44,7 @@ class DotaKeepApp extends Component {
                         <Scene key = "main" tabs = {true} hideTabBar = {true} panHandlers = {null} navBar = {customNavBar}>
                             <Scene key = "homeTab" title = "Home" navBar = {customNavBar}>
                                 <Scene key = "home" component = {Home} title = "Home" />
+                                <Scene key = "login" component = {Login} title = "Login" />
                                 <Scene clone = {true}  key = "playerProfileHome" component = {PlayerProfile} title = "Player Profile" panHandlers = {null} navBar = {deepNavBar} />
                                 <Scene key = "matchesSearchHome" component = {MatchesSearch} title = "Search Matches" direction = 'vertical' panHandlers = {null} navBar = {modalNavBar} />
                             </Scene>
